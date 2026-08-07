@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2026-06-12T14:03:40.605Z</updated>
+  <updated>2026-08-07T18:17:19.145Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>老桑大学习</title>
+    <link href="http://example.com/post/64f0d087.html"/>
+    <id>http://example.com/post/64f0d087.html</id>
+    <published>2026-08-07T15:31:30.000Z</published>
+    <updated>2026-08-07T18:17:19.145Z</updated>
+    
+    
+    
+    
+    <category term="ACG" scheme="http://example.com/categories/ACG/"/>
+    
+    
+    <category term="Game" scheme="http://example.com/tags/Game/"/>
+    
+    <category term="Zangief" scheme="http://example.com/tags/Zangief/"/>
+    
+    <category term="Street Fighter 6" scheme="http://example.com/tags/Street-Fighter-6/"/>
+    
+  </entry>
   
   <entry>
     <title>Hollow Knight:Silksong</title>
@@ -547,33 +568,6 @@
     <category term="禁漫" scheme="http://example.com/tags/%E7%A6%81%E6%BC%AB/"/>
     
     <category term="补救" scheme="http://example.com/tags/%E8%A1%A5%E6%95%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Stable-Diffusion-webui和ml-SD的本地部署</title>
-    <link href="http://example.com/post/82e04830.html"/>
-    <id>http://example.com/post/82e04830.html</id>
-    <published>2023-02-17T19:07:58.000Z</published>
-    <updated>2024-04-05T07:08:33.140Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于网站遭受到了管理人的错误处理，珍贵资源未能得以保留，鲁迅说过，网站不能空无一文（？，故水文一篇，赖以充数（逃</p><h2 id="部署前准备"><a href="#部署前准备" class="headerlink" title="部署前准备"></a>部署前准备</h2><ul><li>科学上网</li><li>能不用Mac就不用Mac</li><li>做好看鬼图的心理准备（确信</li></ul><h2 id="ml-SD"><a href="#ml-SD" class="headerlink" title="ml-SD"></a>ml-SD</h2><p>本来事先是想着直接上SD的，但找参考时看到了ml-SD的<a href="https://blog.csdn.net/soulteary/article/details/128269466">部署指南</a>，本着走前人走过的路的精神，就先试试ml-SD吧</p><p>客观来说，ml-SD在Mac上是要比SD有足够的优势的，毕竟是Apple改过的能动用M系列GPU的，比后面部署的SD-webui单纯用CPU搁那里算可快太多了，苦于不会写ui（fvv没有去看，摆烂人实锤），在实际使用方面还是webui更舒适一些。</p><h3 id="Conda安装"><a href="#Conda安装" class="headerlink" title="Conda安装"></a>Conda安装</h3><p>到<a href="https://repo.anaconda.com/archive/">Conda官网</a>或<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">镜像站</a>下载，下载完后执行安装，建议用<code>vi ~/.condarc</code>对其进行换源，保护后面下载时不至于血压升高（</p><p>在完成 Conda 的安装之后，我们就可以用它来快速的创建不影响本地机器环境，只和项目关联的干净的 Python 运行环境了。</p><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conda create -n coreml_stable_diffusion python=3.8 -y</span><br><span class="line">//初始化环境</span><br><span class="line">conda activate coreml_stable_diffusion</span><br><span class="line">//启动</span><br><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">//安装程序依赖的软件包</span><br></pre></td></tr></table></figure><h3 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/apple/ml-stable-diffusion.git</span><br><span class="line">//拉库</span><br><span class="line">cd ml-stable-diffusion</span><br><span class="line">pip install -r requirements.txt</span><br><span class="line">//安装依赖</span><br></pre></td></tr></table></figure><h3 id="模型转换"><a href="#模型转换" class="headerlink" title="模型转换"></a>模型转换</h3><p>现在我们有跑的环境了，缺少点来跑的model，上Huggingface注册一个账号，获取token后利用token登录，这样我们就可以从Huggingface上下载model了。和SD不一样，ml-SD好像只能运行转换格式后的model，我们需要转换 Huggingface 上的 PyTorch &#x2F; TF 开放模型到 Apple Core ML 模型格式</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m python_coreml_stable_diffusion.torch2coreml --convert-unet --convert-text-encoder --convert-vae-decoder --convert-safety-checker -o ./models</span><br><span class="line">//默认下载CompVis/stable-diffusion-v1-4，如若想用其他模型，可自行添加--model-version参数</span><br></pre></td></tr></table></figure><h3 id="生成图片及参数录入优化"><a href="#生成图片及参数录入优化" class="headerlink" title="生成图片及参数录入优化"></a>生成图片及参数录入优化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m python_coreml_stable_diffusion.pipeline --prompt &quot;magic book on the table&quot; -i ./models -o ./output --compute-unit ALL --seed 93</span><br><span class="line">//画一本桌子上的魔法书</span><br></pre></td></tr></table></figure><p>我们可以用gradio来创建一个 Web 界面，把 ML Stable Diffusion 的图片生成和 Web 界面“绑定”到一起（但不想看了，就没有后续力</p><h3 id="感觉，快了，也没快多少（bushi"><a href="#感觉，快了，也没快多少（bushi" class="headerlink" title="感觉，快了，也没快多少（bushi"></a>感觉，快了，也没快多少（bushi</h3><p><img src="https://raw.githubusercontent.com/misaka-10201/img/main/00006-550923006.png"></p><p>真不戳（赞赏</p><h2 id="Stable-Diffusion-webui"><a href="#Stable-Diffusion-webui" class="headerlink" title="Stable-Diffusion-webui"></a>Stable-Diffusion-webui</h2><p>在玩了几次ml-SD后，愈发感觉指南里的web过于直白，给不了多少自由度，自己又不想自己写，于是便决定用现成的webui，正好<a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon">官方文档</a>里也有对Apple单独的部署指导，实际部署起来感觉比ml-SD更顺畅（？</p><h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">brew install cmake protobuf rust python@3.10 git wget</span><br><span class="line">//前置依赖</span><br><span class="line">git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui</span><br><span class="line">//拉库</span><br><span class="line">//放置下载的模型</span><br><span class="line">cd stable-diffusion-webui</span><br><span class="line">./webui.sh</span><br><span class="line">//运行</span><br></pre></td></tr></table></figure><p>事先装好Homebrew</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;由于网站遭受到了管理人的错误处理，珍贵资源未能得以保留，鲁迅说过，网站不能空无一文（？，故水文一篇，赖以充数（逃&lt;/p&gt;
-&lt;h2 id=&quot;部署前准备&quot;&gt;&lt;a href=&quot;#部署前准备&quot; class=&quot;headerlink&quot; title=&quot;部署前准备&quot;&gt;&lt;/a&gt;部署前准备&lt;/</summary>
-      
-    
-    
-    
-    <category term="ACG" scheme="http://example.com/categories/ACG/"/>
-    
-    
-    <category term="ml-stable-diffusion" scheme="http://example.com/tags/ml-stable-diffusion/"/>
-    
-    <category term="Stable-Diffusion-webui" scheme="http://example.com/tags/Stable-Diffusion-webui/"/>
     
   </entry>
   
