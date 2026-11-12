@@ -2,7 +2,8 @@
   'use strict';
   var state = {
     posts: [], current: null, repo: null, filter: 'all', search: '',
-    previewPort: 4000, previewRunning: false, saveTimer: null, dirty: false
+    previewPort: 4000, previewRunning: false, saveTimer: null, dirty: false,
+    hash: '', stale: false
   };
   function $(id) { return document.getElementById(id); }
 
@@ -129,6 +130,8 @@
       if (!r.ok) { toast(r.error || '打开失败'); return; }
       state.current = r.post;
       state.dirty = false;
+      state.hash = r.post.hash || '';
+      state.stale = false;
       $('fm').value = r.post.frontMatter;
       $('body').value = r.post.body;
       $('cur-title').textContent = r.post.title;
@@ -146,15 +149,22 @@
 
   function save(silent) {
     if (!state.current) { toast('先选一篇文章'); return Promise.resolve(); }
+    if (state.stale) { status('文件已被别处修改，已暂停保存——刷新或点「还原」', true); return Promise.resolve(); }
     var payload = {
       file: state.current.file,
       frontMatter: $('fm').value,
-      body: $('body').value
+      body: $('body').value,
+      baseHash: state.hash
     };
     return api('/post', { method: 'PUT', body: payload }).then(function (r) {
-      if (!r.ok) { status('保存失败：' + (r.error || ''), true); toast('保存失败：' + (r.error || '')); return; }
+      if (!r.ok) {
+        if (r.stale) { state.stale = true; clearTimeout(state.saveTimer); }
+        status('保存失败：' + (r.error || ''), true);
+        toast('保存失败：' + (r.error || ''));
+        return;
+      }
       state.dirty = false;
-      var keep = state.current.file;
+      state.hash = r.post.hash || '';
       state.current = r.post;
       $('cur-title').textContent = r.post.title;
       $('cur-sub').textContent = (r.post.date || '') +

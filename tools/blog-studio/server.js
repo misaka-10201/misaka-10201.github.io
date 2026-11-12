@@ -115,6 +115,7 @@ async function readPost(file) {
   const dateVal = data.date instanceof Date ? toDateStr(data.date) : (data.date ? String(data.date) : '');
   return {
     file: name, raw, frontMatter, body, fmError,
+    hash: crypto.createHash('sha1').update(raw).digest('hex'),
     title: data.title ? String(data.title) : name.replace(/\.md$/, ''),
     date: dateVal,
     tags: Array.isArray(data.tags) ? data.tags.map(String) : (data.tags ? [String(data.tags)] : []),
@@ -240,6 +241,26 @@ async function handleApi(req, res, url) {
     const name = safeName(body.file);
     const fm = String(body.frontMatter == null ? '' : body.frontMatter);
     try { yaml.load(fm); } catch (e) { return sendJson(res, 400, { ok: false, error: 'YAML 语法错误：' + e.message }); }
+    if (!body.baseHash) {
+      return sendJson(res, 400, {
+        ok: false, stale: true,
+        error: '缺少版本校验信息（页面是旧版缓存）。请强制刷新页面后再保存：Mac 用 Cmd+Shift+R，iPhone 用 设置→Safari→清除历史记录 或换个标签页重开。',
+      });
+    }
+    {
+      let diskHash = '';
+      try {
+        const diskRaw = await fsp.readFile(path.join(POSTS_DIR, name), 'utf8');
+        diskHash = crypto.createHash('sha1').update(diskRaw).digest('hex');
+      } catch (_) { diskHash = ''; }
+      if (diskHash && diskHash !== body.baseHash) {
+        return sendJson(res, 409, {
+          ok: false, stale: true,
+          error: '磁盘上的文件已经被改过（可能是另一个标签页/另一台设备），为免覆盖已拒绝保存。点击「还原」或刷新页面后重来。',
+          diskHash,
+        });
+      }
+    }
     await fsp.writeFile(path.join(POSTS_DIR, name), joinPost(fm, body.body), 'utf8');
     const post = await readPost(name);
     return sendJson(res, 200, { ok: true, post, savedAt: Date.now() });
