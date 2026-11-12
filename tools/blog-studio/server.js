@@ -87,8 +87,8 @@ function splitPost(raw) {
 }
 function joinPost(frontMatter, body) {
   const fm = String(frontMatter == null ? '' : frontMatter).replace(/\s+$/, '');
-  const b = String(body == null ? '' : body);
-  return '---\n' + fm + '\n---\n\n' + b;
+  const b = String(body == null ? '' : body).replace(/\n+$/, '');
+  return '---\n' + fm + '\n---\n\n' + (b ? b + '\n' : '');
 }
 function parseFmList(fm) {
   const m = fm.match(/^tags:\s*\n((?:[ \t]*-[ \t]*.*\n?)+)/m);
@@ -264,6 +264,15 @@ async function handleApi(req, res, url) {
     if (body.published === false) lines.push('published: false');
     await fsp.writeFile(path.join(POSTS_DIR, name), joinPost(lines.join('\n'), ''), 'utf8');
     return sendJson(res, 200, { ok: true, file: name, abbrlink });
+  }
+
+  if (p === '/post/restore' && method === 'POST') {
+    const body = await readBody(req);
+    const name = safeName(body.file);
+    const rel = 'source/_posts/' + name;
+    const r = await git(['checkout', '--', rel]);
+    if (r.code !== 0) return sendJson(res, 400, { ok: false, error: (r.err || r.out || '还原失败').trim() });
+    return sendJson(res, 200, { ok: true, post: await readPost(name) });
   }
 
   if (p === '/post/delete' && method === 'POST') {

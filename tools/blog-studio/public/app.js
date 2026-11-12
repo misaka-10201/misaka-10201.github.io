@@ -319,6 +319,23 @@
     $('btn-menu').addEventListener('click', function () { document.body.classList.toggle('drawer'); });
     $('drawer-backdrop').addEventListener('click', function () { document.body.classList.remove('drawer'); });
     $('btn-save').addEventListener('click', function () { clearTimeout(state.saveTimer); save(false); });
+    $('btn-revert').addEventListener('click', function () {
+      if (!state.current) { toast('先选一篇文章'); return; }
+      if (!window.confirm('丢弃这篇文章未提交的改动，回到上次提交的版本？')) return;
+      api('/post/restore', { method: 'POST', body: { file: state.current.file } }).then(function (r) {
+        if (!r.ok) { toast(r.error || '还原失败'); return; }
+        var p = r.post;
+        state.current = p;
+        state.dirty = false;
+        $('fm').value = p.frontMatter;
+        $('body').value = p.body;
+        $('cur-title').textContent = p.title;
+        renderPreview();
+        loadDiff();
+        toast('已还原到上次提交');
+        refresh();
+      });
+    });
     $('btn-validate').addEventListener('click', validate);
     $('btn-commit').addEventListener('click', openCommit);
     $('btn-push').addEventListener('click', doPush);
