@@ -291,19 +291,55 @@
     });
   }
 
-  function doPush() {
-    if (!state.repo || !state.repo.remote) { toast('先设置 remote origin'); return; }
-    if (state.dirty) { toast('还有未保存的编辑'); return; }
-    if (!window.confirm('推送到 ' + state.repo.remote + ' 的 ' + (state.repo.branch || 'HEAD') + '？')) return;
-    status('推送中…');
-    switchTab('output');
-    switchView('output');
-    $('output').textContent = '正在 push…';
-    api('/push', { method: 'POST' }).then(function (r) {
-      $('output').textContent = (r.output || '') + (r.error ? '\n' + r.error : '') + (r.hint ? '\n提示：' + r.hint : '');
-      status(r.ok ? '推送成功 ✓' : '推送失败 ✗', !r.ok);
-      toast(r.ok ? '已推送到 GitHub' : '推送失败，看输出');
-      refresh();
+  function openPublish() {
+    if (!state.repo || !state.repo.isRepo) { toast('先初始化 git 仓库'); return; }
+    if (!state.repo.remote) { toast('先设置 remote origin'); return; }
+    if (state.dirty) { toast('还有未保存的编辑，稍等自动保存'); return; }
+    var t = state.current ? state.current.title : '';
+    $('publish-msg').value = t ? 'post: 更新《' + t + '》' : 'chore: 站点更新';
+    var dirty = state.repo.dirty || 0;
+    $('publish-dirty-hint').textContent = dirty
+      ? '工作区有 ' + dirty + ' 处未提交改动，会先用下面的信息提交'
+      : '工作区干净，本次只做构建与部署';
+    $('publish-out').classList.add('hidden');
+    $('publish-out').textContent = '';
+    $('btn-publish-go').disabled = false;
+    $('publish-modal').classList.remove('hidden');
+    $('publish-msg').focus();
+  }
+
+  function renderSteps(r) {
+    var out = $('publish-out');
+    out.classList.remove('hidden');
+    var lines = (r.steps || []).map(function (s) {
+      return (s.ok ? '✓ ' : '✗ ') + s.name + (s.output ? '\n' + s.output.split('\n').slice(-6).join('\n') : '');
+    });
+    var head = r.needsMessage ? '工作区有改动，需要填一个提交信息' : (r.ok ? '发布完成，站点已更新' : ('发布中断：' + (r.error || '')));
+    out.textContent = head + '\n\n' + lines.join('\n\n');
+  }
+
+  function doPublish() {
+    var msg = $('publish-msg').value.trim();
+    if (!msg) { toast('提交信息不能为空'); return; }
+    $('btn-publish-go').disabled = true;
+    var out = $('publish-out');
+    out.classList.remove('hidden');
+    out.textContent = '正在执行：提交 → 推送源码 → 清理 → 构建 → 部署…（构建加部署通常 10 秒内）';
+    status('发布中…');
+    api('/publish', { method: 'POST', body: { message: msg } }).then(function (r) {
+      renderSteps(r);
+      if (r.ok) {
+        status('已发布 ✓');
+        toast('已发布到站点');
+        $('publish-modal').classList.add('hidden');
+        $('output').textContent = (r.steps || []).map(function (s) { return '[' + (s.ok ? 'OK' : 'FAIL') + '] ' + s.name + '\n' + (s.output || ''); }).join('\n\n');
+        refresh();
+      } else {
+        status('发布中断 ✗', true);
+        toast(r.error || '发布失败');
+        $('btn-publish-go').disabled = false;
+        refresh();
+      }
     });
   }
 
@@ -348,7 +384,9 @@
     });
     $('btn-validate').addEventListener('click', validate);
     $('btn-commit').addEventListener('click', openCommit);
-    $('btn-push').addEventListener('click', doPush);
+    $('btn-push').addEventListener('click', openPublish);
+    $('btn-publish-cancel').addEventListener('click', function () { $('publish-modal').classList.add('hidden'); });
+    $('btn-publish-go').addEventListener('click', doPublish);
     $('btn-theme-start').addEventListener('click', startTheme);
     $('btn-theme-refresh').addEventListener('click', function () {
       var u = themeUrl();

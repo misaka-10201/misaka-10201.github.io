@@ -381,6 +381,35 @@ async function handleApi(req, res, url) {
     return sendJson(res, 200, { ok: r.code === 0, output: (r.out + r.err).trim() });
   }
 
+  if (p === '/publish' && method === 'POST') {
+    const body = await readBody(req);
+    const steps = [];
+    const step = (name, r) => {
+      const ok = r.code === 0;
+      steps.push({ name, ok, output: (((r.out || '') + '\n' + (r.err || '')).trim()).slice(-4000) });
+      return ok;
+    };
+    const fail = (error) => sendJson(res, 200, { ok: false, steps, error });
+    const repo = await repoState();
+    if (!repo.isRepo) return fail('还不是 git 仓库');
+    if (repo.dirty > 0) {
+      const msg = String(body.message || '').trim();
+      if (!msg) return sendJson(res, 400, { ok: false, steps, needsMessage: true, dirty: repo.dirty });
+      if (!step('暂存改动 git add -A', await git(['add', '-A']))) return fail('暂存失败');
+      if (!step('提交源码 git commit', await git(['commit', '-m', msg]))) return fail('提交失败');
+    }
+    if (!repo.remote) return fail('没有配置 remote origin');
+    if (!step('推送源码 origin/' + (repo.branch || 'HEAD'), await git(['push', 'origin', 'HEAD'], { timeout: 120000 }))) {
+      return fail('源码推送失败，站点未更新');
+    }
+    if (!step('清理 hexo clean', await hexoCli(['clean']))) return fail('清理失败');
+    if (!step('构建 hexo generate', await hexoCli(['generate'], { timeout: 240000 }))) return fail('构建失败，已停止发布，站点未更新');
+    if (!fs.existsSync(path.join(ROOT, 'public', 'CNAME'))) return fail('public/CNAME 不见了，为免自定义域名失效已停止发布');
+    step('部署 hexo deploy', await hexoCli(['deploy'], { timeout: 240000 }));
+    const okAll = steps[steps.length - 1].ok;
+    return sendJson(res, 200, { ok: okAll, steps, error: okAll ? '' : '部署失败，站点可能未更新' });
+  }
+
   if (p === '/preview/start' && method === 'POST') {
     await startPreview();
     await new Promise((r) => setTimeout(r, 3500));
