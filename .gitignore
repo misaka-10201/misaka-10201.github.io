@@ -12,3 +12,6 @@ _multiconfig.yml
 
 # 主题上游 .git 的本地备份
 .theme-git-backup/
+
+# 临时测试脚本
+/.studio-*.js
