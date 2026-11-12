@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+/db.json
+*.log
+node_modules/
+/public/
+.deploy*/
+_multiconfig.yml
+
+# blog-studio 本地口令与配置
+.blog-studio.json
+
+# 主题上游 .git 的本地备份
+.theme-git-backup/

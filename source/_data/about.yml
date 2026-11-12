@@ -1,0 +1,146 @@
+- class_name: 关于页
+  subtitle: 萌之上,即为荡漾✨
+  avatarImg: https://avatars.githubusercontent.com/u/100698901?v=4
+  avatarSkills:
+    left:
+      - 🐟 飞舞一条似咸鱼
+    right:
+      - 保底必歪老非酋 😈
+  name: Shawn JR
+  description: 没到24岁,是学生
+  aboutsiteTips:
+    tips: 生活
+    title1: 摄影
+    title2: 热爱而去 经历
+    word:
+      - 健身
+      - 生活
+      - 旅行
+  helloAbout: 你该喝水了😎
+  skillsTips:
+    tips: Life
+    title: 探索,经历,收获
+  careers:
+    tips: 成分
+    title: 你说的对,但是...
+    list:
+      - desc: 原神,启动!
+        color: "#357ef5"
+      - desc: 我去,初音未来
+        color: "#39c5bb"
+      - desc: 妖梦,嘿嘿🤤,妖梦
+        color: "#d9d6c3"
+    img: https://raw.githubusercontent.com/misaka-10201/img/main/hdnobgmiku.png
+  statistic:
+    link: /archives
+    text: 文章隧道
+    cover: https://bu.dusays.com/2023/05/01/644f4b037b930.jpg
+  map:
+    title: sensei
+    StrengthenTitle: 最喜欢的学生😋
+    background: https://raw.githubusercontent.com/misaka-10201/img/main/IMG_4424.JPG
+    backgroundDark: https://raw.githubusercontent.com/misaka-10201/img/main/IMG_4424.JPG
+  selfInfo:
+    selfInfoTips1: 生于
+    selfInfoContentYear: 2004
+    selfInfoTips2: 南京航空航天大学
+    selfInfoContent2: 飞行技术
+    selfInfoTips3: 现在职业
+    selfInfoContent3: 飞行学员✈️
+  personalities:
+    author_name: 提倡者
+    personality_type: INFJ-A
+    photo_url: https://raw.githubusercontent.com/misaka-10201/img/main/100066591_p0.PNG
+    personality_img: https://raw.githubusercontent.com/misaka-10201/img/main/62d3b8454da175b6616acd2fb781477e.png
+    name_url: https://www.16personalities.com/ch/esfj-%E4%BA%BA%E6%A0%BC
+  maxim:
+    maxim_tips: 座右铭
+    maxim_top: 一觉醒来，
+    maxim_bottom: 是明天!
+  buff:
+    buff_tips: 特长
+    buff_top: 睡觉😴 咬肌超级组
+    buff_bottom: 杀软二次元 😋
+  game:
+    game_tips: 爱好游戏
+    game_title: 原神
+    game_uid: "UID: 173124183"
+    game_bg: https://raw.githubusercontent.com/misaka-10201/img/main/ganyu&shenhe.png
+  comic:
+    comic_tips: 爱好番剧
+    comic_title: 追番
+    comic_list:
+      - name: 紫罗兰永恒花园
+        href: https://www.bilibili.com/bangumi/media/md8892/?spm_id_from=666.25.b_6d656469615f6d6f64756c65.1
+        cover: https://bu.dusays.com/2023/05/24/646db43983d99.webp
+      - name: 鏈鋸人
+        href: https://www.bilibili.com/bangumi/media/md28339623
+        cover: https://raw.githubusercontent.com/misaka-10201/img/main/chainsawman.png
+      - name: 暗杀教室
+        href: https://www.dmttang.com/voddetail/336.html
+        cover: https://raw.githubusercontent.com/misaka-10201/img/main/assassin.jpeg
+      - name: 物语系列
+        href: https://www.bilibili.com/bangumi/media/md3297
+        cover: https://raw.githubusercontent.com/misaka-10201/img/main/5f3a2d511d91c973de2fdbb6cf8218e3.jpg
+      - name: 碧蓝之海
+        href: https://yhdmoe.com/watch/20180161
+        cover: https://raw.githubusercontent.com/misaka-10201/img/main/Grand-Blue-Dreaming-Visual-001-20180427.jpg
+
+  like:
+    like_tips: 关注偏好
+    like_title: 独立游戏
+    like_bg: https://raw.githubusercontent.com/misaka-10201/img/main/hollowknight.jpg
+    like_bottom: 动作,肉鸽,类恶魔城
+  music:
+    music_tips: 音乐偏好
+    music_title: Tohou,动漫OP,游戏原声
+    music_bg: https://raw.githubusercontent.com/misaka-10201/img/main/34844544_p0.jpg
+    music_link: /music
+#  reward_list:
+#    - name: 海阔蓝
+#      amount: 8.8
+#      datatime: 2023-03-28
+#    - name: LK66
+#      amount: 66.6
+#      datatime: 2023-03-24
+#    - name: 张时貳
+#      amount: 6.6
+#      datatime: 2023-01-22
+#    - name: ZeroAf
+#      amount: 9.9
+#      datatime: 2022-12-14
+#    - name: LuckyWangXi
+#      amount: 6.6
+#      datatime: 2022-12-14
+#    - name: 刀中日月长
+#      amount: 10
+#      datatime: 2022-11-16
+#    - name: 鹿啵包
+#      amount: 10
+#      datatime: 2022-11-08
+#    - name: 疾速k
+#      amount: 50
+#      datatime: 2022-09-20
+#    - name: 伴舟先生大霖子
+#      amount: 4.03
+#      datatime: 2022-10-27
+#      suffix: 贝壳
+#    - name: Magica_0x0
+#      amount: 3.36
+#      datatime: 2022-10-07
+#      suffix: 贝壳
+#    - name: 名字就是要短像这样
+#      amount: 3.36
+#      datatime: 2022-08-25
+#      suffix: 贝壳
+#    - name: Leviathan520
+#      amount: 1.34
+#      datatime: 2022-08-23
+#      suffix: 贝壳
+#    - name: 托马斯
+#      amount: 10
+#      datatime: 2022-08-19
+#    - name: 哇是猫猫欸
+#      amount: 1.34
+#      datatime: 2022-08-19
+#      suffix: 贝壳

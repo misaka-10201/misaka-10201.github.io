@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>blog-studio</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body data-view="edit">
+<header id="topbar">
+  <button id="btn-menu" class="icon-btn" title="文章列表">☰</button>
+  <div class="title-wrap">
+    <div id="cur-title">未选择文章</div>
+    <div id="cur-sub" class="muted">从左侧挑一篇开始</div>
+  </div>
+  <div class="actions">
+    <button id="btn-new" class="icon-btn" title="新建文章">＋</button>
+    <button id="btn-save" class="primary">保存</button>
+    <button id="btn-validate">校验</button>
+    <button id="btn-commit">提交</button>
+    <button id="btn-push">推送</button>
+  </div>
+</header>
+
+<div id="layout">
+  <aside id="sidebar">
+    <div class="side-head">
+      <input id="search" placeholder="搜索标题或标签" autocomplete="off">
+      <div class="filters">
+        <button class="chip active" data-filter="all">全部</button>
+        <button class="chip" data-filter="draft">草稿</button>
+        <button class="chip" data-filter="changed">有改动</button>
+      </div>
+    </div>
+    <ul id="list"></ul>
+    <div id="repo" class="repo"></div>
+  </aside>
+
+  <main id="main">
+    <section class="pane" id="pane-edit">
+      <div class="field-label">front-matter（YAML 原文，保持不变才不会污染 diff）</div>
+      <textarea id="fm" spellcheck="false" placeholder="title: ..."></textarea>
+      <div class="field-label">正文（Markdown）</div>
+      <textarea id="body" spellcheck="false" placeholder="开始写…"></textarea>
+    </section>
+
+    <section class="pane" id="pane-side">
+      <div class="tabs">
+        <button class="tab active" data-tab="preview">预览</button>
+        <button class="tab" data-tab="theme">主题预览</button>
+        <button class="tab" data-tab="diff">Diff</button>
+        <button class="tab" data-tab="output">输出</button>
+      </div>
+      <div class="tabpanes">
+        <div class="tabpane active markdown-body" id="tab-preview"></div>
+        <div class="tabpane" id="tab-theme">
+          <div class="row">
+            <button id="btn-theme-start">启动 hexo server</button>
+            <button id="btn-theme-refresh">刷新</button>
+            <span id="theme-hint" class="muted"></span>
+          </div>
+          <iframe id="theme-frame" title="主题预览"></iframe>
+        </div>
+        <div class="tabpane" id="tab-diff"><pre class="mono" id="diff-out"></pre></div>
+        <div class="tabpane" id="tab-output"><pre class="mono" id="output"></pre></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav id="mobilenav">
+  <button data-view="edit" class="active">编辑</button>
+  <button data-view="preview">预览</button>
+  <button data-view="diff">Diff</button>
+  <button data-view="output">输出</button>
+</nav>
+
+<div id="statusbar"><span id="status-text">就绪</span></div>
+<div id="toast"></div>
+<div id="drawer-backdrop"></div>
+
+<div id="modal" class="hidden">
+  <div class="modal-box">
+    <h3>提交到 git</h3>
+    <textarea id="commit-msg" rows="3" placeholder="post: 更新《标题》"></textarea>
+    <label class="check"><input type="checkbox" id="commit-validate" checked> 提交前先跑 hexo generate 校验</label>
+    <pre class="mono hidden" id="commit-out"></pre>
+    <div class="modal-actions">
+      <button id="btn-commit-cancel">取消</button>
+      <button id="btn-commit-go" class="primary">提交</button>
+    </div>
+  </div>
+</div>
+
+<script src="/vendor/marked.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

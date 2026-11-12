@@ -1,0 +1,36 @@
+- class_name: 开启创造力
+  creativity_list:
+    - name: Game
+      color: "#fff"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/youxi-2.png
+    - name: Let it go
+      color: "#57b6e6"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/xinyang.png
+    - name: Thought
+      color: "#4082c3"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/xiju.png
+    - name: Read
+      color: "#333"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/wenxue.png
+    - name: Travel
+      color: "#2e3a41"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/lvhang.png
+    - name: Education
+      color: "#6495ED"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/jiaoyu.png
+    - name: Movie
+      color: "#20B2AA"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/dianying-2.png
+    - name: Photograph
+      color: "#937df7"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/sheying-3.png
+    - name: Code
+      color: "#4499e4"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/code.png
+    - name: Science
+      color: "#b8f0ae"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/kexue.png
+    - name: Sport
+      color: "#fff"
+      icon: https://raw.githubusercontent.com/misaka-10201/img/main/yundong.png
+

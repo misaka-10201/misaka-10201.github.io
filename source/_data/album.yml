@@ -1,0 +1,248 @@
+- class_name: 那些花儿🌸
+  path_name: /flowers
+  type: 2
+  description: 听说樱花飘落的速度是秒速五厘米哦🍃
+  cover: https://raw.githubusercontent.com/misaka-10201/img/main/IMG_1354.jpeg
+  top_background: https://bu.dusays.com/2023/06/30/649e546ada7dd.webp
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  album_list:
+    - date: 2023/03/25
+      address: 无锡
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/5B4E0E67-530C-4A54-8C6B-7497BC17B3C4.jpg
+    - date: 2023/03/25
+      address: 无锡
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DEE23100-EB2B-42A0-B578-6F5B9DC5E068.jpg
+    - date: 2023/03/25
+      address: 无锡
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/A0AF1E48-B938-450F-99CE-EDE928DA6EA0.jpg
+    - date: 2023/03/25
+      address: 无锡
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/76F6BCC8-BCCB-4509-9481-BB88ED8D139F.jpg
+    - date: 2023/03/25
+      address: 无锡
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/A7B3FD43-540A-4344-9F9F-3ED813D986CF.jpg
+    - date: 2026/04/04
+      address: 菏泽
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/50DF512B-D556-42E9-9D4E-932D12B488BD_1_105_c.jpeg
+    - date: 2026/04/04
+      address: 菏泽
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/A5F38BA5-BF7C-40F8-B92A-CF9149BD9099_1_105_c.jpeg
+    - date: 2026/04/04
+      address: 菏泽
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/255C9DFE-5C62-41CF-9BBB-75355782AB21_1_102_o.jpeg
+    - date: 2026/04/04
+      address: 菏泽
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/019B24EE-D510-4403-B5CB-37068599BF76_1_102_o.jpeg
+
+
+        
+- class_name: 出去看看🧳
+  path_name: /travelPhoto
+  type: 1
+  description: 世界那么大,我庆幸我来过✈️
+  top_link: /album
+  top_btn_text: 返回
+  top_background: https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1408.JPG
+  cover: https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1319.JPG
+  album_list:
+    - date: 2023/08/07
+      address: 日本 京都
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1394%202.JPG
+    - date: 2023/08/07
+      address: 日本 京都
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1297.JPG
+    - date: 2023/08/07
+      address: 日本 京都
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1342%202.JPG
+    - date: 2023/08/07
+      address: 日本 京都
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1410.JPG
+    - date: 2023/08/07
+      address: 日本 京都
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1406.JPG
+    - date: 2023/08/07
+      address: 日本 京都
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1305.JPG
+    - date: 2023/08/07
+      address: 日本 伊豆
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1445.JPG
+    - date: 2023/08/07
+      address: 日本 伊豆
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1478.JPG
+    - date: 2023/08/07
+      address: 日本 伊豆
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1562.JPG
+    - date: 2023/08/07
+      address: 日本 东京
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DSC_1634.JPG
+    - date: 2025/09/01
+      address: 印度尼西亚 巴厘岛
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/IMG_7859.jpeg
+    - date: 2025/08/31
+      address: 印度尼西亚 巴厘岛
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/96B82061-AEC0-4769-9820-480A820C7A92_1_105_c.jpeg
+
+        
+- class_name: 山河
+  path_name: /cnPhoto
+  type: 1
+  description: 世之奇伟、瑰怪、非常之观🚉 
+  top_link: /album
+  top_btn_text: 返回
+  top_background: https://raw.githubusercontent.com/misaka-10201/img/main/img_20260714_135620.jpeg
+  cover: https://raw.githubusercontent.com/misaka-10201/img/main/FC3BFC5C-3316-433D-8DAC-EA9C3FC4429A_4_5005_c.jpeg
+  album_list:
+    - date: 2026/07/13
+      address: 山西 大同 恒山
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/CD950A48-065F-4E73-B20B-0CE5B2AC43C3_1_105_c.jpeg
+    - date: 2026/07/14
+      address: 陕西 渭南 华山
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/img_20260714_135620.jpeg
+    - date: 2026/07/14
+      address: 陕西 渭南 华山
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/F9DE0F5F-F0C2-4ED9-8C1D-952B24CE270E_1_105_c.jpeg
+    - date: 2026/07/14
+      address: 陕西 渭南 华山
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/A657FF03-59D8-491E-A7BD-52885D080F49_1_105_c.jpeg
+    - date: 2026/07/15
+      address: 河南 郑州 嵩山
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/168DAD2E-9ADF-4F68-81B5-D4FE992EE3EB_1_105_c.jpeg
+    - date: 2026/07/15
+      address: 河南 郑州 嵩山
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/8DDD7BDB-12D6-45EC-9BA1-354BF8B9A8A2_1_105_c.jpeg
+    - date: 2026/07/16
+      address: 湖南 衡阳 衡山
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/83919648-B11A-4390-9515-6582AA4067E5_1_105_c.jpeg
+    - date: 2026/07/16
+      address: 湖南 衡阳 衡山
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/A328E734-872A-496E-B57D-F39258C4D41C_1_105_c.jpeg
+    - date: 2026/07/28
+      address: 青海 察尔汗盐湖
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/EBC0E558-250D-40CE-8911-57C6C854E97D_1_102_o.jpeg
+    - date: 2026/07/28
+      address: 青海 大柴旦
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/E75E2EEA-F288-49E2-AE25-7814F08561DF_1_102_o.jpeg
+    - date: 2026/07/28
+      address: 青海 大柴旦
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/92F86528-DD88-444D-B3B3-3C832B64135C_1_102_o.jpeg
+    - date: 2026/07/29
+      address: 甘肃 酒泉
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/61E9777F-4A4B-493A-AD77-C5ADE8D1870C_1_105_c.jpeg
+    - date: 2026/07/31
+      address: 甘肃 张掖
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/1F47B057-FD12-4E62-9D7C-7009F3D771D0_1_102_o.jpeg
+    - date: 2026/07/31
+      address: 甘肃 张掖
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/2FE7D807-8436-4849-870F-95C8D1BE4A5D_1_105_c.jpeg
+    - date: 2026/07/31
+      address: 甘肃 张掖
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/101ABA6D-A86C-4536-BE81-92A6FA77C210_1_105_c.jpeg
+    - date: 2026/07/31
+      address: 甘肃 张掖
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/6A508AE0-CBDF-42A6-A0DA-3BD3154B3398_1_105_c.jpeg
+    - date: 2026/08/01
+      address: 青海 祁连
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/DCC59A09-2269-467D-A88A-B165A0581B9F_1_102_o.jpeg
+    - date: 2026/08/01
+      address: 青海 祁连
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/F5E67CED-E45A-43D6-BC8C-8EB08EC01475_1_102_o.jpeg
+    - date: 2026/01/30
+      address: 黑龙江 哈尔滨 索菲亚广场
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/8965637F-336E-4381-85CF-48DDDD8D5F80_1_105_c.jpeg
+    - date: 2026/01/31
+      address: 黑龙江 哈尔滨
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/D9DBFF7B-236F-4ED2-886D-20DF12ADAA91_1_102_o.jpeg
+    - date: 2026/02/01
+      address: 黑龙江 哈尔滨
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/627BBC27-3EC9-445C-B99E-88E144617F1F_1_102_o.jpeg
+    - date: 2026/02/01
+      address: 黑龙江 哈尔滨
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/90E4651F-FE9D-4CE8-8553-07FF55566D92_1_105_c.jpeg
+    - date: 2026/02/01
+      address: 黑龙江 哈尔滨
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/68E66BAC-0693-4B7F-9339-EB2BABA9C77F_1_105_c.jpeg
+    - date: 2026/03/28
+      address: 江苏 南京
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/IMG_9470.jpeg
+    - date: 2024/07/05
+      address: 辽宁 大连
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/E401A201-E1B9-4604-8183-ADC320737F42.jpeg
+        
+        
+- class_name: 日常
+  path_name: /dailyPhoto
+  type: 1
+  description: 会记录(心虚
+  top_link: /album
+  top_btn_text: 返回
+  top_background: https://raw.githubusercontent.com/misaka-10201/img/main/EB9FEF2D-FE17-462F-851C-0839B70905D5_1_105_c.jpeg
+  cover: https://raw.githubusercontent.com/misaka-10201/img/main/A4C9E55C-DF66-480D-94EE-283C65325A01_1_102_o.jpeg
+  album_list:
+    - date: 2026/05/20
+      address: 南航大
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/EB9FEF2D-FE17-462F-851C-0839B70905D5_1_105_c.jpeg
+    - date: 2026/01/21
+      address: 沈阳大街
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/EE3740D6-B023-4122-ADF2-176FB1B0E5A6_1_105_c.jpeg
+    - date: 2021/06/11
+      address: 南航大
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/BD62908C-C479-4B07-9232-64A7EA7293A5.jpeg
+    - date: 2023/12/22
+      address: 南航大
+      image:
+        - https://raw.githubusercontent.com/misaka-10201/img/main/4D062A66-722B-44CC-B22B-D8C57CFE8076.jpeg
